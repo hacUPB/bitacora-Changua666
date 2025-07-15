@@ -17,3 +17,27 @@ son las partes tangibles de un computador
  - **Unidad de control (CU)**: Interpreta las instrucciones.
  - **Unidad aritmético-lógica (ALU)**: realiza cálculos matemáticos y operaciones lógicas.
  - **Registros**: memorias internas de alta velocidad.
+
+
+### b) Memoria
+- **Primaria**: Almacena datos temporales
+ - RAM (random access memory).
+ - Caché (Muy rápida, cercana a la CPU).
+- **Secundaria**: Almacenamiento permanente.
+ - Disco Duro (HDD) o disco solido (SDD).
+
+### c) Dispositivos de entrada
+Permiten al usuario introducir datos al computador:
+- Teclado 
+- Mouse 
+- Microfono 
+- Camara 
+
+### e) Dispositivos de entrada/salida 
+cumplen ambas funciones: 
+- Pantalla táctil 
+- Memorias USB
+- Tarjetas de red
+
+### f) placa madre o **motherboard**
+- Tarjeta donde se conectan los principales componentes
