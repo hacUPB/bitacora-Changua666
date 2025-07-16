@@ -42,3 +42,18 @@ cumplen ambas funciones:
 
 ### f) placa madre o **motherboard**
 - Tarjeta donde se conectan los principales componentes
+
+---
+
+# Actividad 2 
+
+## ¿Qué es un programa? 
+Un programa es un conjunto de instrucciones que se escriben en un lenguaje de programación y que un computador puede ejecutar para realizar una tarea específica. Los programas pueden ser simples o complejos, y pueden ser diseñados para realizar una variedad de tareas, como cálculos, procesamiento de texto, gráficos, juegos, etc.
+
+## ¿Qué es un lenguaje ensamblador?
+Un lenguaje ensamblador es un lenguaje de programación de bajo nivel que se utiliza para escribir programas que se comunican directamente con el hardware del computador. Estos lenguajes utilizan símbolos y códigos que se traducen directamente a lenguaje de máquina, permitiendo un control preciso sobre el hardware del computador.
+
+## ¿Qué es un lenguaje de maquina?
+El lenguaje de máquina es el lenguaje que entiende el computador, compuesto por códigos binarios (0 y 1) que representan instrucciones y datos. El lenguaje de máquina es específico de cada tipo de procesador y es la forma en que el computador ejecuta instrucciones y realiza cálculos.
+
+
