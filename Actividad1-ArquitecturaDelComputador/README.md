@@ -1,3 +1,4 @@
+# Actividad 1: Arquitectura del Computador
 
 ## ¿Qué es un computador digital moderno?
 Un *computador digital moderno* es una maquina electrónica que sirve para procesar información de manera automática y rápida, utilizando una serie de instrucciones y datos para realizar tareas. Estos computadores pueden realizar cálculos, almacenar y recuperar información, y ejecutar programas para resolver problemas o realizar tareas especificas.
