@@ -33,10 +33,12 @@ D;JEQ
 @100
 0;JMP
 @20
-//punto 8 
-@var1
-D = M
-@var2
-D = D + M
-@var3
-M = D
+//punto 12
+@R1 
+D=M
+@2
+D=D+M
+@69 
+D=D+A
+@4
+M=D
