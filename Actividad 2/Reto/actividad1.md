@@ -87,38 +87,41 @@ Es el valor almacenado en la direccion de la memoria de la variable
 ´´´
 int sum = 0;
 
-for(int i = 1; i <= 100; i++) {
+for(int i = 1; i <= 100; i++) 
+{
     sum += i;
 }
+
 ´´´
 
 # Actividad 3
 
 ´´´
-section .data
-sum dd 0
-limit dd 100
+@1
+D=A
+@0
+M=D
+@1
+M=0
+(LOOP)
+@0
+D=M
+@101
+D=D-A
+@END
+D;JGE
+@0
+D=M
+@1
+M=D+M
+@0
+M=M+1
+@LOOP
+0;JMP
+(END)
+@END
+0;JMP
 
-section .text
-global _start
-
-_start:
-mov eax,0        ; sum = 0
-mov ecx,1        ; i = 1
-
-for_loop:
-cmp ecx,[limit]  ; i <= 100 ?
-jg end_for       ; si i > 100 salir
-add eax,ecx      ; sum += i
-inc ecx          ; i++
-jmp for_loop
-
-end_for:
-mov [sum],eax    ; guardar el resultado final en sum
-
-mov eax,1        ; sys_exit
-mov ebx,0
-int 0x80
 ´´´
 
 # Actvidad 4
@@ -137,29 +140,53 @@ punt = &var;
 
 # Actividad 5
 ´´´
-section .data
-var dd 10        ; variable entera inicializada en 10
+@10
+D=A
+@0
+M=D
+@0
+D=A
+@1
+M=D
+@1
+A=M
+M=20
 
-section .bss
-punt resd 1      ; espacio para el puntero (4 bytes)
-
-section .text
-global _start
-
-_start:
-; punt = &var;
-mov eax, var     ; cargar la dirección de var en EAX
-mov [punt], eax  ; almacenar la dirección en el puntero
-
-; *punt = 20;
-mov eax, [punt]  ; cargar la dirección guardada en punt
-mov dword [eax], 20  ; guardar 20 en la dirección apuntada
-
-; salir del programa
-mov eax, 1
-mov ebx, 0
-int 0x80
 ´´´
+
+# Actvidad 6/7
+
+´´´
+
+@10
+D=A
+@0
+M=D       
+@5
+D=A
+@1
+M=D       
+@0
+D=A
+@2
+M=D      
+@2
+A=M
+D=M      
+@1
+M=D       
+
+´´´
+
+# Actividad 8
+- ¿Qué hace esto `int *pvar;`?
+Declara el puntero 
+- ¿Qué hace esto `pvar = var;`?
+Esta mal escrito, pero si estuviera correcto declararia la direccion de la variable
+- ¿Qué hace esto `var2 = *pvar`?
+Lee el valor de la varible y lo declara en var2
+- ¿Qué hace esto `pvar = &var3`?
+Guarda lo que haya en el puntero en la variable 
 
 
 
