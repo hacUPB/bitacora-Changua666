@@ -28,5 +28,6 @@ Dibuja un circulo de radio 50 en cada posicion usando el color que le asignamos
 ## ¿Qué hace cada función? ¿Qué hace cada línea de código?
 Lo que hace cada funcion ya lo explique en la actividad anterior
 
-![Uploading Actividad3.png…]()
+<img width="1036" height="781" alt="Actividad3" src="https://github.com/user-attachments/assets/797e93cd-1823-4262-a2f1-ef179b87df80" />
+
 
