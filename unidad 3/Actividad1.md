@@ -30,21 +30,17 @@ Lo que hace cada funcion ya lo explique en la actividad anterior
 
 le modifique al codigo la funcion setup y le puse esta linea que modifica el color de la figura, en este caso al color rosado
 
-´´´
-particleColor = ofColor::pink;
-
-´´´
+`particleColor = ofColor::pink;`
 
 y cambie la funcion draw y le puse esta linea que cambia la forma de la figura, en este caso la convierte en un rectangulo
 
-´´´
+```
 void ofApp::draw() {
-	for (auto & pos : particles) {
-		ofSetColor(particleColor);
-		ofDrawRectangle(pos, 80, 80);
-	}
+    for (auto & pos : particles) {
+        ofSetColor(particleColor);
+        ofDrawRectangle(pos, 80, 80);
+    }
 }
-´´´
 
 <img width="1036" height="781" alt="Actividad3" src="https://github.com/user-attachments/assets/797e93cd-1823-4262-a2f1-ef179b87df80" />
 
