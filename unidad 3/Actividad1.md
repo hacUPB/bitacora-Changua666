@@ -41,7 +41,7 @@ void ofApp::draw() {
         ofDrawRectangle(pos, 80, 80);
     }
 }
-
+```
 <img width="1036" height="781" alt="Actividad3" src="https://github.com/user-attachments/assets/797e93cd-1823-4262-a2f1-ef179b87df80" />
 
 
