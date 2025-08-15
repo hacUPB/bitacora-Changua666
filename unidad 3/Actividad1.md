@@ -44,4 +44,16 @@ void ofApp::draw() {
 ```
 <img width="1036" height="781" alt="Actividad3" src="https://github.com/user-attachments/assets/797e93cd-1823-4262-a2f1-ef179b87df80" />
 
+# Actividad 5
+## ¿Cuál es la definición de un puntero?
+Un puntero es una variable que almacena la dirección de memoria de otra variable
+En esencia, un puntero "apunta" a un lugar específico en la memoria, permitiendo acceder y manipular datos de manera indirecta
+
+## ¿Dónde está el puntero?
+El puntero aparece en esta parte del codigo 
+```
+spheres.push_back(new Sphere(x, y, radius));
+```
+
+
 
