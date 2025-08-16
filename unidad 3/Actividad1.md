@@ -83,4 +83,9 @@ En este programa se guarda:
 - Los punteros dentro de spheres guardan las direcciones de cada Sphere creada en el heap.
 - selectedSphere guarda la dirección de la esfera que el usuario seleccionó con el mouse.
 
+# Actividad 7
+## ¿Qué sucede cuando presionas la tecla “c”?
+Me aparece esto
+<img width="1025" height="386" alt="sistemas foto" src="https://github.com/user-attachments/assets/a413e828-3207-4b60-bba8-624dce850b9f" />
+
 
