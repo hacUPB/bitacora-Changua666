@@ -95,4 +95,11 @@ cuando realizo el cambio en el codigo aparece esto
 
 Me imagino que sucede porque en el codigo se crea un puntero con la esfera 
 
+# Actividad 9
+## ¿Qué sucede cuando presionas la tecla “f”?
+
+Se borra la ultima esfera creada
+
+<img width="1020" height="786" alt="sistemas foto 3" src="https://github.com/user-attachments/assets/c7d82347-0968-48c3-85d0-4c8b2a045820" />
+
 
