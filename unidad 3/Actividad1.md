@@ -86,6 +86,13 @@ En este programa se guarda:
 # Actividad 7
 ## ¿Qué sucede cuando presionas la tecla “c”?
 Me aparece esto
+
 <img width="1025" height="386" alt="sistemas foto" src="https://github.com/user-attachments/assets/a413e828-3207-4b60-bba8-624dce850b9f" />
+
+cuando realizo el cambio en el codigo aparece esto 
+
+<img width="1028" height="801" alt="sistemas foto 2" src="https://github.com/user-attachments/assets/e0ecc05e-b11e-4a3b-a504-d3712e3af25f" />
+
+Me imagino que sucede porque en el codigo se crea un puntero con la esfera 
 
 
