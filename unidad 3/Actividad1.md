@@ -55,5 +55,32 @@ El puntero aparece en esta parte del codigo
 spheres.push_back(new Sphere(x, y, radius));
 ```
 
+## ¿Cómo se inicializa el puntero?
+Un puntero en C++ se inicializa asignándole una dirección de memoria o un valor especial 
+En el codigo se inicializa asi
+
+```
+spheres.push_back(new Sphere(x, y, radius));
+```
+## ¿Para qué se está usando el puntero?
+En el codigo el puntero se esta usando para dos cosas: 
+
+1.  guardar y manejar objetos en un vector
+   
+```
+spheres.push_back(new Sphere(x, y, radius));
+```
+
+2. Tener una "referencia" a la esfera seleccionada
+
+```
+Sphere* selectedSphere;
+```
+
+## ¿Qué es exactamente lo que está almacenado en el puntero?
+Un puntero en C++ no guarda el objeto en sí, sino la dirección de memoria donde está ese objeto.
+En este programa se guarda: 
+- Los punteros dentro de spheres guardan las direcciones de cada Sphere creada en el heap.
+- selectedSphere guarda la dirección de la esfera que el usuario seleccionó con el mouse.
 
 
