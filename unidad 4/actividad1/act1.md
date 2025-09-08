@@ -1,0 +1,17 @@
+# Actividad 1
+
+3. Una lista enlazada es una estructura de datos formada por nodos, donde cada nodo almacena un dato y una referencia al siguiente nodo, lo que permite que los elementos estén dispersos en la memoria y conectados únicamente por punteros; en cambio, en un arreglo los elementos se almacenan en posiciones de memoria contiguas, lo que permite acceder rápidamente a cualquier índice, pero dificulta inserciones y eliminaciones intermedias, mientras que en las listas enlazadas estas operaciones son más flexibles aunque el acceso sea más lento al ser secuencial.
+
+4. En el código, los nodos se vinculan entre sí mediante un puntero dentro de cada nodo, que almacena la dirección del siguiente nodo en la lista, de esta forma, aunque los nodos estén en posiciones diferentes de la memoria, se pueden recorrer en orden siguiendo esa cadena de punteros, logrando la conexión típica de una estructura de lista.
+
+5. En una lista enlazada en C++, la memoria se gestiona dinamicamente, es decir, cada vez que se necesite un nodo este se crea con el operador new, que guarda espacio en el heap y devuelve un puntero al este nodo recien creado, cuando ya no se necesita se libera con delete, lo cual llama al destructor del objeto y devuelve la memoria al sistema, entonces es necesario usar funciones como clear o destructores que recorran la lista eliminando nodo por nodo.
+
+6. La principal ventaja de una lista enlazada frente a un arreglo al insertar o eliminar en posiciones intermedias es que no es necesario mover todos los elementos para mantener el orden, ya que basta con ajustar los punteros que conectan los nodos, lo que hace que estas operaciones sean más eficientes; en cambio, en un arreglo, al estar los datos en memoria contigua, insertar o eliminar en medio implica desplazar varios elementos, lo cual es más costoso en tiempo.
+
+7. En el código, se evita que haya fugas de memoria gracias al método clear(), que recorre la lista nodo por nodo y libera cada uno con delete; además, el destructor de la clase LinkedList llama a clear() automáticamente cuando la lista deja de existir, asegurando que todos los nodos creados dinámicamente se eliminen y la memoria reservada en el heap se devuelva al sistema.
+
+8. Cuando se invoca el método clear() en la clase LinkedList del código, la lista comienza desde el head y recorre nodo por nodo: primero guarda la referencia al siguiente (nextNode), luego libera el nodo actual con delete, y avanza al siguiente hasta llegar a nullptr; de esta manera todos los nodos creados con new son eliminados del heap, y al final se ponen head y tail en nullptr y size en 0, asegurando que no queden punteros colgantes ni fugas de memoria, mientras que el destructor de LinkedList llama a este método automáticamente cuando la lista deja de existir.
+
+9. Cuando se agrega un nuevo nodo al final de la lista enlazada, el operador new reserva memoria en el heap para ese nodo, el puntero next del nodo que antes era el tail pasa a apuntar al nuevo nodo, y finalmente el puntero tail de la lista se actualiza para señalarlo; la memoria no necesita ser contigua como en un arreglo, por lo que la lista puede crecer dinámicamente sin reubicar los demás elementos. En cuanto al rendimiento, esta operación es muy eficiente porque, al mantener un puntero tail, insertar al final ocurre en tiempo constante O(1), a diferencia de un arreglo donde insertar al final puede requerir redimensionar y copiar todos los elementos si el espacio reservado se agota.
+
+10. 
