@@ -9,3 +9,6 @@ Los arreglos serian los ecos y cuando uno de estos "muere" despues de cierto tie
 Para la lista enlazada se me ocurre hacer unos "sub-ecos" generados en base al eco original y heredan su comportamiento, color, etc.
 
 Para la pila usaria un sistema que muestre los ultimos "ecos" generados al presionar una tecla.
+
+## Video Demostracion 
+[Link](https://youtu.be/Y9undA1NicU)
