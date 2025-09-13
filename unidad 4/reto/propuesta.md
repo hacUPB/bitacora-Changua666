@@ -10,6 +10,8 @@ Para la lista enlazada se me ocurre hacer unos "sub-ecos" generados en base al e
 
 Para la pila usaria un sistema que muestre los ultimos "ecos" generados al presionar una tecla.
 
-## [Demostracion Video](https://youtu.be/Y9undA1NicU)
+## RAE1
+[Demostracion Video](https://youtu.be/Y9undA1NicU)
 
-##
+## RAE2
+
