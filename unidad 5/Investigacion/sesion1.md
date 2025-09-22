@@ -94,3 +94,21 @@ El uso de técnicas como reinterpret_cast para acceder a miembros privados en un
 
 **¿Qué implicaciones tiene este experimento sobre la confianza en las barreras de encapsulamiento que proporciona C++?**
 Este experimento muestra que en C++ las barreras de encapsulamiento no son mecanismos de seguridad en tiempo de ejecución, sino simples reglas aplicadas por el compilador al momento de revisar el código fuente. En otras palabras, la privacidad de los miembros sirve para guiar al programador, organizar el diseño y evitar accesos indebidos durante la compilación, pero no impide que alguien con acceso a punteros o conversiones forzadas manipule directamente la memoria del objeto. La implicación es que no se debe confiar en private o protected como protecciones absolutas frente a accesos malintencionados, sino entenderlas como herramientas de disciplina y mantenimiento del código, útiles para estructurar sistemas más claros y robustos, pero no como barreras de seguridad reales.
+
+### Herencia 
+**¿Cómo se organizan los atributos en memoria?**
+Primero se ubica los miembors de la base, despues los miembros de Derived. Ya cuando se imprimen las direcciones &d Coincidira con &d.baseVar y &d.derivedVar aparece a continuación, desplazado por el tamaño de baseVar. 
+<img width="652" height="134" alt="Captura de pantalla 2025-09-22 165106" src="https://github.com/user-attachments/assets/c61f8b06-9e25-4d41-a34f-eca5270b50ff" />
+
+**¿Qué sucede si agregamos más niveles de herencia?**
+los atributos de cada clase se van enlazando en orden jerárquico, y solo en casos como herencia múltiple o clases con virtuales la organización se vuelve más compleja.
+
+### Polimorfismo 
+**Analizar con un depurador: observa cómo se resuelven las llamadas a makeSound() en tiempo de ejecución.**
+Al analizar el programa con el depurador, se observa que la llamada a makeSound() no va directamente a una dirección fija, sino que primero el objeto entrega su puntero oculto a la vtable, de allí se obtiene la dirección real de la función y finalmente se ejecuta un salto indirecto hacia ella. Este proceso confirma que el compilador usa las vtables para resolver en tiempo de ejecución qué versión del método virtual llamar, permitiendo así el polimorfismo dinámico.
+
+**¿Cómo utiliza el programa las vtables para el polimorfismo?**
+El programa utiliza las vtables para implementar el polimorfismo dinámico asociando a cada objeto con una tabla de funciones virtuales que corresponde a su tipo real. Cada objeto con métodos virtuales guarda un puntero oculto (vptr) que apunta a la vtable de su clase. Cuando se invoca un método virtual a través de un puntero o referencia a la clase base, el compilador genera código que sigue el vptr, consulta en la vtable la dirección de la función correspondiente y luego salta a ejecutarla. De esta manera, aunque la variable sea del tipo base (Animal*), en tiempo de ejecución se invoca el método correcto de Dog o Cat, haciendo posible el polimorfismo.
+
+**¿Cuál es el impacto en el rendimiento?** 
+El polimorfismo en C++ introduce un pequeño impacto en el rendimiento debido a las llamadas a funciones virtuales. Cada vez que se invoca un método virtual, el programa debe acceder al puntero a la vtable del objeto, buscar la función correspondiente y luego ejecutarla, lo que añade una ligera indirección en comparación con una llamada directa a función. Además, cada objeto que tiene métodos virtuales ocupa algo más de memoria, normalmente un puntero extra a la vtable, y las funciones virtuales rara vez se pueden inlinear, lo que limita ciertas optimizaciones del compilador. Sin embargo, en la mayoría de los programas, este costo es despreciable y se compensa con la flexibilidad y extensibilidad que ofrece el polimorfismo.
