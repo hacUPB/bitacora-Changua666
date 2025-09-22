@@ -73,3 +73,18 @@ En tiempo de ejecución, los atributos de cada objeto se acceden directamente de
 
 **Conclusión: cómo esta comprensión afecta el diseño de sistemas.** 
 Entender cómo se organizan los datos, métodos y vtables en memoria ayuda a decidir mejor en el diseño de sistemas: usar polimorfismo virtual cuando aporta flexibilidad, evitarlo en rutas críticas si el costo extra importa, y tener en cuenta el tamaño real de los objetos para estructuras grandes. En síntesis, permite equilibrar eficiencia y extensibilidad al construir aplicaciones en C++.
+
+# Sesion 3 
+### Reflexion 
+**¿Qué es el encapsulamiento y cuál es su propósito en la programación orientada a objetos?**
+El encapsulamiento es un principio de la programacion orientada a objetos que consiste en agrupar en una misma clase los datos y los metodos que operan en este, y al mismo tiempo restringir el acceso directo a ciertos detalles internos.
+Su proposito es proteger los datos, y hacer que el codigo sea mas seguro, claro y facil de entender. 
+
+**¿Por qué es importante proteger los datos de una clase y restringir el acceso desde fuera de la misma?** 
+Es importante proteger los datos de una clase porque si cualquier parte del programa se puede modificar se perderia el control de la consistencia del programa, y podrian aparecer errores mas dificiles de detectar. Al restringir el acceso desde fuera de la clase, solo se permite interactuar con los atributos a través de métodos públicos controlados, lo que garantiza que los valores siempre se mantengan en un estado válido y bajo ciertas reglas. 
+
+**¿Qué significa reinterpret_cast y cómo afecta la seguridad del programa?** 
+reinterpret_cast permite reinterpretar la memoria de un objeto como otro tipo, pero es muy peligroso porque el compilador deja de protegerte. Su uso puede vulnerar la seguridad del programa, romper la portabilidad y generar errores difíciles de depurar, por lo que debe usarse solo en casos muy específicos y justificados (como trabajar con APIs de bajo nivel o hardware).
+
+**¿Por qué crees que se pudo acceder a los miembros privados de MyClass en este experimento, a pesar de que el compilador normalmente lo impediría?** 
+Se pudo acceder a los miembros privados de la clase porque en C++ la encapsulación no impone barreras físicas en memoria, sino que funciona como una regla de compilación. El compilador detecta y prohíbe en el código fuente el acceso a miembros privados desde fuera de la clase, pero en el programa ya compilado esos atributos siguen estando en la memoria del objeto, ubicados en un offset definido. Al usar conversiones como reinterpret_cast o manipulación de punteros, es posible saltarse la verificación del compilador y leer o modificar directamente esos bytes, lo que demuestra que la privacidad en C++ depende del compilador y no de mecanismos de protección en tiempo de ejecución.
