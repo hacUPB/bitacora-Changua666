@@ -55,3 +55,21 @@ Cuando una clase en C++ no tiene metodos virtuales, el tamaño de estos solo se 
 ### ¿Qué papel juegan las vtables en el polimorfismo?
 Las vtables cumplen el papel de enlazar en tiempo de ejecución las llamadas a métodos virtuales con la implementación correcta. Cada clase con métodos virtuales posee una vtable distinta, y cada objeto guarda un puntero oculto (vptr) que indica a qué tabla debe acudir. Así, cuando se invoca un método virtual a través de un puntero o referencia a la clase base, el programa consulta la vtable señalada por el vptr y ejecuta la versión del método correspondiente a la clase real del objeto, garantizando el polimorfismo dinámico.
 
+## Uso de punteros y referencias 
+### Analizar el impacto en memoria
+Cuando se agrega un puntero a una función como miembro de una clase, cada instancia reserva espacio para almacenar ese puntero, por lo que el tamaño del objeto aumenta en la cantidad de bytes que ocupa un puntero en la arquitectura usada (4 bytes en 32 bits o 8 bytes en 64 bits). El valor guardado en ese campo es simplemente la dirección de la función, que vive en el segmento de código del programa; el puntero mismo reside dentro del bloque de memoria del objeto, ya sea en el stack o en el heap según cómo lo hayas creado. A diferencia de los métodos virtuales, que usan un vptr para acceder a una vtable compartida, este puntero apunta de forma directa a una función específica, sin necesidad de una tabla intermedia.
+
+### Reflexión Guiada
+**- ¿Cuál es la relación entre los punteros a métodos y la vtable?**
+**- ¿Cómo afectan estos mecanismos al rendimiento del programa?**
+Los punteros a métodos y las vtables comparten la idea de almacenar direcciones de funciones para permitir llamadas indirectas, pero mientras los primeros son gestionados explícitamente por el programador y apuntan de manera directa a una función concreta, las vtables son creadas automáticamente por el compilador para soportar el polimorfismo dinámico y permiten elegir en tiempo de ejecución la versión correcta de un método virtual. En cuanto al rendimiento, ambos mecanismos introducen un leve costo frente a una llamada directa, ya que requieren al menos una indirection en memoria, pero en la práctica esa diferencia suele ser mínima y solo se vuelve relevante en contextos críticos de desempeño como bucles muy intensivos en cálculos.
+
+### Reflexion Individual 
+**¿Dónde residen los datos y métodos de una clase en la memoria?** 
+Los atributos residen en la memoria reservada para cada objeto, mientras que los metodos y los vtables se almacenan una sola vez en en el codigo del programa. 
+
+**¿Cómo interactúan las diferentes partes en tiempo de ejecución?**
+En tiempo de ejecución, los atributos de cada objeto se acceden directamente desde su bloque de memoria, mientras que los métodos residen en el segmento de código y se comparten entre instancias. Las llamadas a funciones normales se hacen con saltos directos, pero las virtuales requieren que el programa consulte el vptr del objeto y de allí su vtable para obtener la dirección correcta, lo que habilita el polimorfismo dinámico. Si se usan punteros a funciones, cada objeto guarda explícitamente la dirección de la función y el salto se hace en un solo paso, sin tabla intermedia.
+
+**Conclusión: cómo esta comprensión afecta el diseño de sistemas.** 
+Entender cómo se organizan los datos, métodos y vtables en memoria ayuda a decidir mejor en el diseño de sistemas: usar polimorfismo virtual cuando aporta flexibilidad, evitarlo en rutas críticas si el costo extra importa, y tener en cuenta el tamaño real de los objetos para estructuras grandes. En síntesis, permite equilibrar eficiencia y extensibilidad al construir aplicaciones en C++.
