@@ -1,0 +1,1 @@
+Mi diseño son unos circulos que tienen 3 comportamientos distintos (Normal, pulsante y giratorio) que se generan de manera aleatoria y con las teclas "1", "2" y "3" se cambia su estado global (calm, energy y chaos). 
