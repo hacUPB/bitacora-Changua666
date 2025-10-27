@@ -60,3 +60,15 @@ El framebuffer es una región de memoria que almacena los datos de píxeles que 
 ### ¿Para qué se usa el Z-buffer o depth buffer en el render pipeline?
 
 El Z-buffer o depth buffer se utiliza en el render pipeline para gestionar la visibilidad de los objetos en una escena 3D y resolver problemas de superposición. Su función principal es almacenar la información de profundidad de cada píxel renderizado, permitiendo determinar qué objetos son visibles y cuáles están ocultos detrás de otros. Cuando se procesa un nuevo fragmento, su valor de profundidad se compara con el almacenado en el Z-buffer; si el nuevo fragmento está más cerca de la cámara, se actualiza el framebuffer y el Z-buffer, asegurando así una correcta representación de la escena. Esto facilita el renderizado de escenas complejas y mejora la eficiencia al permitir que los objetos se dibujen en cualquier orden, ya que la visibilidad se resuelve durante la rasterización.
+
+# Actividad 2 
+Al modificar el metodo draw me sale esto 
+<img width="1050" height="815" alt="image" src="https://github.com/user-attachments/assets/76106636-3365-44a1-9aee-9a15383d8a26" />
+La modificacion que le hice fue poner el coso de color de negro (0) 
+
+y al ejecutar el codigo original me aparece esto 
+<img width="1036" height="809" alt="image" src="https://github.com/user-attachments/assets/7f817c2d-1ee6-47c3-b4b5-f8781497af3e" />
+
+### ¿Cómo funciona?
+En openframeworks se carga un shader. En el setup se cargan los archivos del shader y en el draw se "activan" estos con shader begin y se dibuja un rectangulo que cubre toda la ventana 
+
