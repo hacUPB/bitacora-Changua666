@@ -70,5 +70,20 @@ y al ejecutar el codigo original me aparece esto
 <img width="1036" height="809" alt="image" src="https://github.com/user-attachments/assets/7f817c2d-1ee6-47c3-b4b5-f8781497af3e" />
 
 ### ¿Cómo funciona?
-En openframeworks se carga un shader. En el setup se cargan los archivos del shader y en el draw se "activan" estos con shader begin y se dibuja un rectangulo que cubre toda la ventana 
+En openframeworks se carga un shader. En el setup se cargan los archivos del shader y en el draw se "activan" estos con shader begin y se dibuja un rectangulo que cubre toda la ventana. 
+Cada vértice del rectángulo pasa por el vertex shader, que calcula su posición en pantalla usando una matriz de transformación (modelViewProjectionMatrix). Luego, cada píxel del rectángulo pasa por el fragment shader, que calcula su color según su posición (gl_FragCoord): el valor rojo depende de la coordenada X y el verde de la Y, mientras que el azul es constante. Así, al dividir las coordenadas por el tamaño de la ventana, se obtiene un gradiente de colores que cambia del azul al blanco según la posición de cada píxel en la pantalla.
+
+### ¿Qué resultados obtuviste?
+Los resultados ya los mostre al principio de la actividad 
+
+### ¿Estás usando un vertex shader?
+Si, en el ejemplo se usa un vertex shader pero de manera muy sencilla, este solo se encarga de posicionar los vertices del triangulo en la pantalla. 
+
+### ¿Estás usando un fragment shader?
+Si, tambien se usa un fragment shader y este ya si se encarga de calcular los colores y generar esa gradiente. 
+
+### Analiza el código de los shaders. ¿Qué hace cada uno?
+
+# Actividad 3 
+
 
