@@ -85,5 +85,19 @@ Si, tambien se usa un fragment shader y este ya si se encarga de calcular los co
 ### Analiza el código de los shaders. ¿Qué hace cada uno?
 
 # Actividad 3 
+Al abrir el ejemplo me aparece asi 
+<img width="1017" height="798" alt="image" src="https://github.com/user-attachments/assets/26c04f2a-3dbd-41fa-9f76-e7ec0428f55c" />
+y lo cambie a este color 
+<img width="1035" height="797" alt="image" src="https://github.com/user-attachments/assets/cc4c3910-0144-46ac-8447-5c5ca3036f89" />
+
+### ¿Qué es un uniform? 
+Un uniform es una variable que permite enviar info desde el programa hacia los shaders, de modo que todos los vertices o fragmentos usen el mismo valor durante un cuadro. A diferencia de las variables que cambian por pixel o vertice, un uniform mantiene un valor constante mientras ejecuta este shader. Esto permite que se puedan pasar valores como el tiempo, la posicion del mouse o el tamaño de la ventana para generar animaciones o efectos visuales dinamicos. 
+
+### ¿Cómo funciona el código de aplicación, los shaders y cómo se comunican estos?
+
+
+
+
+
 
 
