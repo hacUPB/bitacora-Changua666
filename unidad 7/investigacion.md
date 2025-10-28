@@ -94,7 +94,14 @@ y lo cambie a este color
 Un uniform es una variable que permite enviar info desde el programa hacia los shaders, de modo que todos los vertices o fragmentos usen el mismo valor durante un cuadro. A diferencia de las variables que cambian por pixel o vertice, un uniform mantiene un valor constante mientras ejecuta este shader. Esto permite que se puedan pasar valores como el tiempo, la posicion del mouse o el tamaño de la ventana para generar animaciones o efectos visuales dinamicos. 
 
 ### ¿Cómo funciona el código de aplicación, los shaders y cómo se comunican estos?
+El código de la aplicación en openFrameworks se encarga de cargar los shaders, enviarles información y dibujar los elementos en pantalla. Cuando el programa inicia, se cargan los archivos del vertex y fragment shader, y en cada cuadro se activan con shader.begin() antes de dibujar una figura, como un rectángulo. La aplicación envía datos a los shaders mediante variables llamadas uniforms, que pueden representar valores como el tiempo, la posición del mouse o el tamaño de la ventana. El vertex shader usa estos datos para calcular la posición de cada vértice en la pantalla, mientras que el fragment shader los utiliza para determinar el color de cada píxel. De esta forma, la aplicación y los shaders se comunican constantemente: la app controla la lógica y actualiza los valores, mientras los shaders procesan esa información para generar el resultado visual final.
 
+# Actividad 4 
+
+### Que hace el codigo de ejemplo ? 
+El código del ejemplo crea una animación de colores que cambian con el tiempo. En el programa de openFrameworks, se carga el shader y se le envía constantemente el valor del tiempo transcurrido (ofGetElapsedTimef()) mediante un uniform. El vertex shader solo calcula la posición de los vértices, pero el fragment shader usa el valor del tiempo para modificar los colores de los píxeles con funciones como sin() o cos(), generando un patrón que cambia dinámicamente. De esta manera, el shader produce un efecto visual animado, controlado por una variable que se actualiza en cada cuadro desde el código de C++.
+
+### ¿Cómo funciona el código de aplicación, los shaders y cómo se comunican estos?
 
 
 
