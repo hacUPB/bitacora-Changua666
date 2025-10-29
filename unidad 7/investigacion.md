@@ -102,6 +102,9 @@ El código de la aplicación en openFrameworks se encarga de cargar los shaders,
 El código del ejemplo crea una animación de colores que cambian con el tiempo. En el programa de openFrameworks, se carga el shader y se le envía constantemente el valor del tiempo transcurrido (ofGetElapsedTimef()) mediante un uniform. El vertex shader solo calcula la posición de los vértices, pero el fragment shader usa el valor del tiempo para modificar los colores de los píxeles con funciones como sin() o cos(), generando un patrón que cambia dinámicamente. De esta manera, el shader produce un efecto visual animado, controlado por una variable que se actualiza en cada cuadro desde el código de C++.
 
 ### ¿Cómo funciona el código de aplicación, los shaders y cómo se comunican estos?
+En este ejemplo, el código de la aplicación en openFrameworks se encarga de cargar el shader, actualizar el tiempo y enviarlo al shader como un uniform para crear una animación. En el setup() se carga el shader, y en el draw() se activa con shader.begin(), se le pasa el tiempo con shader.setUniform1f("time", ofGetElapsedTimef()), y luego se dibuja una figura, como un rectángulo que cubre toda la pantalla. El vertex shader recibe los vértices y calcula su posición en la ventana usando la matriz de transformación, mientras que el fragment shader usa el valor del uniform time (enviado desde el código C++) para modificar los colores en función del paso del tiempo, por ejemplo, con funciones trigonométricas. Así, la aplicación y los shaders se comunican constantemente: la app actualiza los valores y los envía mediante uniforms, el vertex shader define la posición de los puntos, y el fragment shader determina el color final de cada píxel, generando efectos visuales animados.
+
+
 
 
 
