@@ -1,0 +1,7 @@
+# Reto 
+## Explicacion del proyecto 
+El proyecto es un cubo que al moverle el mouse encima, cambia de color y se deforma. 
+
+El **Vertex Shader** se encarga de la geometría y la deformación del cubo. Su papel es recibir la posición original de cada vértice y, basándose en entradas externas (llamadas uniforms) como la posición del mouse o el tiempo, calcular una nueva posición para ese vértice en el espacio 3D. En este ejemplo interactivo, el código C++ en OpenFrameworks pasa la ubicación del mouse al shader, y el Vertex Shader utiliza esta información para desplazar o modificar los vértices de el cubo. El resultado de este paso es el movimiento o la forma que vemos en la pantalla.       
+
+El **Fragment Shader**  se ocupa del color y el aspecto visual final de la superficie del objeto. Se ejecuta para cada píxel potencial del objeto (fragmento) después de que la geometría ha sido procesada por el Vertex Shader. Su función es determinar el color final de ese píxel. Aunque también podría usar la posición del mouse u otras variables para efectos de color (como cambiar el tono o aplicar un brillo), su tarea principal es aplicar texturas y sombreado para que el objeto se vea correctamente. Es lo que le da el look and feel al objeto, independientemente de cómo haya sido deformado.
