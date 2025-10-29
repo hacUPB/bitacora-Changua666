@@ -168,3 +168,20 @@ class ofApp : public ofBaseApp{
 ```
 # Video 
 [video](https://youtu.be/Veo2vkQG0C8)
+
+## RAE2
+
+# Como probe la aplicacion ofApp.cpp
+Esa la probe de una manera muy sencilla, hice una checklist de todo lo que se supone que deberia aparecer al abrir la aplicacion y pues lo chequee. La chechklist es esta: 
+- La aplicacion deberia mostrar un fondo gris
+- Debe aparecer un cubo wireframe
+- Si se mueve el mouse, se debe cambiar la forma del cubo y cambiar el color
+y como se evidencia en el video, todo esta bien
+
+# Como probe el vertex shader 
+Ese tambien fue muy sencillo, ya que si el funcionamiento del mouse y del cubo funciona, pues significa que esta bien 
+
+# Como probe el fragment shader 
+Lo mismo, si el color cambia significa que funciona, aunque con ese cambie los colores nada mas por curiosidad y supongo que eso tambien funciona como prueba 
+
+
