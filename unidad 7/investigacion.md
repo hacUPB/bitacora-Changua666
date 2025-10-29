@@ -60,3 +60,54 @@ El framebuffer es una región de memoria que almacena los datos de píxeles que 
 ### ¿Para qué se usa el Z-buffer o depth buffer en el render pipeline?
 
 El Z-buffer o depth buffer se utiliza en el render pipeline para gestionar la visibilidad de los objetos en una escena 3D y resolver problemas de superposición. Su función principal es almacenar la información de profundidad de cada píxel renderizado, permitiendo determinar qué objetos son visibles y cuáles están ocultos detrás de otros. Cuando se procesa un nuevo fragmento, su valor de profundidad se compara con el almacenado en el Z-buffer; si el nuevo fragmento está más cerca de la cámara, se actualiza el framebuffer y el Z-buffer, asegurando así una correcta representación de la escena. Esto facilita el renderizado de escenas complejas y mejora la eficiencia al permitir que los objetos se dibujen en cualquier orden, ya que la visibilidad se resuelve durante la rasterización.
+
+# Actividad 2 
+Al modificar el metodo draw me sale esto 
+<img width="1050" height="815" alt="image" src="https://github.com/user-attachments/assets/76106636-3365-44a1-9aee-9a15383d8a26" />
+La modificacion que le hice fue poner el coso de color de negro (0) 
+
+y al ejecutar el codigo original me aparece esto 
+<img width="1036" height="809" alt="image" src="https://github.com/user-attachments/assets/7f817c2d-1ee6-47c3-b4b5-f8781497af3e" />
+
+### ¿Cómo funciona?
+En openframeworks se carga un shader. En el setup se cargan los archivos del shader y en el draw se "activan" estos con shader begin y se dibuja un rectangulo que cubre toda la ventana. 
+Cada vértice del rectángulo pasa por el vertex shader, que calcula su posición en pantalla usando una matriz de transformación (modelViewProjectionMatrix). Luego, cada píxel del rectángulo pasa por el fragment shader, que calcula su color según su posición (gl_FragCoord): el valor rojo depende de la coordenada X y el verde de la Y, mientras que el azul es constante. Así, al dividir las coordenadas por el tamaño de la ventana, se obtiene un gradiente de colores que cambia del azul al blanco según la posición de cada píxel en la pantalla.
+
+### ¿Qué resultados obtuviste?
+Los resultados ya los mostre al principio de la actividad 
+
+### ¿Estás usando un vertex shader?
+Si, en el ejemplo se usa un vertex shader pero de manera muy sencilla, este solo se encarga de posicionar los vertices del triangulo en la pantalla. 
+
+### ¿Estás usando un fragment shader?
+Si, tambien se usa un fragment shader y este ya si se encarga de calcular los colores y generar esa gradiente. 
+
+### Analiza el código de los shaders. ¿Qué hace cada uno?
+
+# Actividad 3 
+Al abrir el ejemplo me aparece asi 
+<img width="1017" height="798" alt="image" src="https://github.com/user-attachments/assets/26c04f2a-3dbd-41fa-9f76-e7ec0428f55c" />
+y lo cambie a este color 
+<img width="1035" height="797" alt="image" src="https://github.com/user-attachments/assets/cc4c3910-0144-46ac-8447-5c5ca3036f89" />
+
+### ¿Qué es un uniform? 
+Un uniform es una variable que permite enviar info desde el programa hacia los shaders, de modo que todos los vertices o fragmentos usen el mismo valor durante un cuadro. A diferencia de las variables que cambian por pixel o vertice, un uniform mantiene un valor constante mientras ejecuta este shader. Esto permite que se puedan pasar valores como el tiempo, la posicion del mouse o el tamaño de la ventana para generar animaciones o efectos visuales dinamicos. 
+
+### ¿Cómo funciona el código de aplicación, los shaders y cómo se comunican estos?
+El código de la aplicación en openFrameworks se encarga de cargar los shaders, enviarles información y dibujar los elementos en pantalla. Cuando el programa inicia, se cargan los archivos del vertex y fragment shader, y en cada cuadro se activan con shader.begin() antes de dibujar una figura, como un rectángulo. La aplicación envía datos a los shaders mediante variables llamadas uniforms, que pueden representar valores como el tiempo, la posición del mouse o el tamaño de la ventana. El vertex shader usa estos datos para calcular la posición de cada vértice en la pantalla, mientras que el fragment shader los utiliza para determinar el color de cada píxel. De esta forma, la aplicación y los shaders se comunican constantemente: la app controla la lógica y actualiza los valores, mientras los shaders procesan esa información para generar el resultado visual final.
+
+# Actividad 4 
+
+### Que hace el codigo de ejemplo ? 
+El código del ejemplo crea una animación de colores que cambian con el tiempo. En el programa de openFrameworks, se carga el shader y se le envía constantemente el valor del tiempo transcurrido (ofGetElapsedTimef()) mediante un uniform. El vertex shader solo calcula la posición de los vértices, pero el fragment shader usa el valor del tiempo para modificar los colores de los píxeles con funciones como sin() o cos(), generando un patrón que cambia dinámicamente. De esta manera, el shader produce un efecto visual animado, controlado por una variable que se actualiza en cada cuadro desde el código de C++.
+
+### ¿Cómo funciona el código de aplicación, los shaders y cómo se comunican estos?
+En este ejemplo, el código de la aplicación en openFrameworks se encarga de cargar el shader, actualizar el tiempo y enviarlo al shader como un uniform para crear una animación. En el setup() se carga el shader, y en el draw() se activa con shader.begin(), se le pasa el tiempo con shader.setUniform1f("time", ofGetElapsedTimef()), y luego se dibuja una figura, como un rectángulo que cubre toda la pantalla. El vertex shader recibe los vértices y calcula su posición en la ventana usando la matriz de transformación, mientras que el fragment shader usa el valor del uniform time (enviado desde el código C++) para modificar los colores en función del paso del tiempo, por ejemplo, con funciones trigonométricas. Así, la aplicación y los shaders se comunican constantemente: la app actualiza los valores y los envía mediante uniforms, el vertex shader define la posición de los puntos, y el fragment shader determina el color final de cada píxel, generando efectos visuales animados.
+
+
+
+
+
+
+
+
