@@ -222,7 +222,7 @@ class ofApp : public ofBaseApp{
 
 ```
 # Video 
-[video](https://youtu.be/Veo2vkQG0C8)
+[FULBITO](https://youtu.be/kRpCNBqvJ_Q)
 
 ## RAE2
 
