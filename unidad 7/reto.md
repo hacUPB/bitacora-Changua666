@@ -1,12 +1,64 @@
 # Reto 
 ## Explicacion del proyecto 
-El proyecto es una esfera con una imagen de ronaldinho que al moverle el mouse encima, se deforma. 
+El proyecto es una esfera con una imagen de ronaldinho que al moverle el mouse encima, se deforma. El proyecto tambien tiene una easycam que hace que sea mas facil ver toda la esfera
+
 ![fulbito](https://github.com/user-attachments/assets/9cf98339-ed02-4a13-84ac-17ad1bcca700)
 
 
 ## RAE1
 Yo la aplicacion la construi cogiendo un ejemplo y modificando su codigo, ya que hacerlo desde 0 no me funciono y me quedo mas facil hacer ese proceso. 
-La aplicacion crea un cubo tridimensional que cambia su aspecto segun la posicion del mouse, en el setup se carga el shader y se define el tamaño del cubo. En draw, el programa activa el shader y le envia informacion como la posicion del mouse, y un color que se mezcla entre rojo y verde a medida que movemos el mouse horizontalmente. 
+La aplicacion crea una esfera tridimensional con una textura simple que cambia su aspecto segun la posicion del mouse y se puede ver libremente con una camara, en el setup se carga el shader, se define el radio de la esfera y se carga la textura. 
+
+```
+void ofApp::setup() {
+	if (ofIsGLProgrammableRenderer()) {
+		shader.load("shadersGL3/shader");
+	} else {
+		shader.load("shadersGL2/shader");
+	}
+
+	ofDisableArbTex();
+	texture.load("fulbito.jpg"); 
+
+	sphere.set(200, 32); 
+}
+```
+
+En draw, el programa activa el shader, la textura y la camara, y aparte le envia informacion como la posicion del mouse, la textura, etc.
+
+```
+void ofApp::draw(){
+	
+	shader.begin();
+
+	float cx = ofGetWidth() / 2.0;
+	float cy = ofGetHeight() / 2.0;
+
+	float mx = mouseX - cx;
+	float my = mouseY - cy;
+
+	shader.setUniform1f("mouseRange", 150);
+	shader.setUniform2f("mousePos", mx, my);
+
+	float percentX = mouseX / (float)ofGetWidth();
+	percentX = ofClamp(percentX, 0, 1);
+
+	shader.setUniformTexture("tex0", texture.getTexture(), 0);
+
+	ofBackground(0);
+
+	
+	cam.begin();
+
+	ofTranslate(0, 0, 0); 
+	sphere.draw();
+
+	cam.end();
+
+	shader.end();
+}
+```
+
 
 # Codigos 
 main.cpp
@@ -30,6 +82,7 @@ int main( ){
 	ofRunApp(window, std::make_shared<ofApp>());
 	ofRunMainLoop();
 }
+
 ```
 
 ofApp.cpp
@@ -37,15 +90,19 @@ ofApp.cpp
 #include "ofApp.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
-	if(ofIsGLProgrammableRenderer()){
+void ofApp::setup() {
+	if (ofIsGLProgrammableRenderer()) {
 		shader.load("shadersGL3/shader");
-	}else{
+	} else {
 		shader.load("shadersGL2/shader");
 	}
 
-box.set(300); // tamaño de los lados
+	ofDisableArbTex();
+	texture.load("fulbito.jpg"); 
+
+	sphere.set(200, 32); 
 }
+
 
 //--------------------------------------------------------------
 void ofApp::update(){
@@ -56,37 +113,30 @@ void ofApp::update(){
 void ofApp::draw(){
 	
 	shader.begin();
-	
 
 	float cx = ofGetWidth() / 2.0;
 	float cy = ofGetHeight() / 2.0;
-	
-	
+
 	float mx = mouseX - cx;
 	float my = mouseY - cy;
-	
-	
+
 	shader.setUniform1f("mouseRange", 150);
-	
-	
 	shader.setUniform2f("mousePos", mx, my);
-	
-	
+
 	float percentX = mouseX / (float)ofGetWidth();
 	percentX = ofClamp(percentX, 0, 1);
-	ofFloatColor colorLeft = ofColor::indianRed;
-	ofFloatColor colorRight = ofColor::forestGreen;
-	ofFloatColor colorMix = colorLeft.getLerped(colorRight, percentX);
-	
-	
-	float mouseColor[4] = {colorMix.r, colorMix.g, colorMix.b, colorMix.a};
-	
-	
-	shader.setUniform4fv("mouseColor", mouseColor);
-	
-	ofTranslate(cx, cy);
 
-	box.drawWireframe();
+	shader.setUniformTexture("tex0", texture.getTexture(), 0);
+
+	ofBackground(0);
+
+	
+	cam.begin();
+
+	ofTranslate(0, 0, 0); 
+	sphere.draw();
+
+	cam.end();
 
 	shader.end();
 }
@@ -135,6 +185,7 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::dragEvent(ofDragInfo dragInfo){ 
 
 }
+
 ```
 
 ofApp.h 
@@ -161,8 +212,14 @@ class ofApp : public ofBaseApp{
 	void gotMessage(ofMessage msg);
 
 	ofShader shader;
-	ofBoxPrimitive box;
+	ofSpherePrimitive sphere;
+	ofImage texture;
+	ofEasyCam cam;
+
+
+
 };
+
 ```
 # Video 
 [video](https://youtu.be/Veo2vkQG0C8)
