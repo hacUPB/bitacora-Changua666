@@ -221,6 +221,57 @@ class ofApp : public ofBaseApp{
 };
 
 ```
+
+shader.vert 
+```
+OF_GLSL_SHADER_HEADER
+
+uniform mat4 modelViewProjectionMatrix;
+in vec4 position;
+in vec2 texcoord;   // 🔹 NUEVO
+out vec2 vTexCoord; // 🔹 NUEVO
+
+uniform float mouseRange;
+uniform vec2 mousePos;
+uniform vec4 mouseColor;
+
+void main()
+{
+    vec4 pos = position;
+	vec2 dir = pos.xy - mousePos;
+	float dist = sqrt(dir.x * dir.x + dir.y * dir.y);
+
+	if(dist > 0.0 && dist < mouseRange) {
+		float distNorm = 1.0 - (dist / mouseRange);
+		dir *= distNorm;
+		pos.x += dir.x;
+		pos.y += dir.y;
+	}
+
+	vTexCoord = texcoord; // 🔹 NUEVO
+	gl_Position = modelViewProjectionMatrix * pos;
+}
+
+```
+
+shader.frag
+
+```
+OF_GLSL_SHADER_HEADER
+
+out vec4 outputColor;
+
+uniform vec4 mouseColor;
+uniform sampler2D tex0; // 🔹 NUEVO
+in vec2 vTexCoord;      // 🔹 NUEVO
+ 
+void main()
+{
+    vec4 texColor = texture(tex0, vTexCoord); // 🔹 NUEVO
+    outputColor = texColor;                   // usar textura
+}
+
+```
 # Video 
 [FULBITO](https://youtu.be/kRpCNBqvJ_Q)
 
