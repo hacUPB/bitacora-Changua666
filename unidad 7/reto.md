@@ -241,8 +241,23 @@ Lo primero que hice fue revisar el codigo del setup para ver si el shader se est
 ```
 shader.load("shadersGL3/shader");
 ```
+y obviamente revise si los shaders estaban en la direccion correcta.
+
+Despues revise si el shader se activa antes de dibujar 
+```
+shader.begin();
+sphere.draw(); // o box.draw();
+shader.end();
+```
+ya despues de verificar eso, si me puse a revisar si la bola se deformaba cuando pasaba el mouse por encima de esta, para ver si el vertex shader estaba activo
 
 # Como probe el fragment shader 
-Lo mismo, si el color cambia significa que funciona, aunque con ese cambie los colores nada mas por curiosidad y supongo que eso tambien funciona como prueba 
+Lo primero que hice fue ejecutar la aplicacion y revisar si la textura se aplica bien (no hay deformaciones, si aparece, etc). 
+Despues de eso, le cambie la textura a otra imagen simplemente para probar y ya 
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/f728903e-19b1-4192-98f1-40b32eb9ba26" />
+
+En el video adjunto de youtube se puede ver como pruebo todas la funcionalidades de la aplicacion
+
 
 
