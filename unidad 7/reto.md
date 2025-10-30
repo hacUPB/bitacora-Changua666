@@ -227,14 +227,20 @@ class ofApp : public ofBaseApp{
 ## RAE2
 
 # Como probe la aplicacion ofApp.cpp
-Esa la probe de una manera muy sencilla, hice una checklist de todo lo que se supone que deberia aparecer al abrir la aplicacion y pues lo chequee. La chechklist es esta: 
-- La aplicacion deberia mostrar un fondo gris
-- Debe aparecer un cubo wireframe
-- Si se mueve el mouse, se debe cambiar la forma del cubo y cambiar el color
-y como se evidencia en el video, todo esta bien
+Para probar la aplicacion lo que hice primero fue revisar si todos los codigos estaban bien escritos (especialmente el de los shaders), ya despues me asegure de que compilara sin errores (que se abran los shaders, que no hayan errores y si habian pues solucionarlos), ya despues de eso ejecute la aplicacion y revise si se muestra lo que queria (en este caso una esfera con la foto de ronaldinho y una camara libre).
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/32945ba1-480f-441b-b478-fe4dcece7551" />
+
+Despues probe que todos los inputs funcionaran (que se pueda deformar la bola, que el mouse funcionara, que se pueda mover la camara libremente).
+
+<img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/0d34f1d5-2e66-4171-87ed-6c3abf70ebaa" />
+
 
 # Como probe el vertex shader 
-Ese tambien fue muy sencillo, ya que si el funcionamiento del mouse y del cubo funciona, pues significa que esta bien 
+Lo primero que hice fue revisar el codigo del setup para ver si el shader se estaba cargando en la linea 
+```
+shader.load("shadersGL3/shader");
+```
 
 # Como probe el fragment shader 
 Lo mismo, si el color cambia significa que funciona, aunque con ese cambie los colores nada mas por curiosidad y supongo que eso tambien funciona como prueba 
