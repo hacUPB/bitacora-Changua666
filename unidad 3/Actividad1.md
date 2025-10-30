@@ -1,0 +1,105 @@
+# 1. ¿Cuál es el resultado que se obtiene al ejecutar este programa?
+ Se puede observar una ventana negra con un punto blanco que sigue al cursor cuando este se mueve 
+
+# Actividad 2
+
+## ¿Qué fue lo que incluimos en el archivo .h?
+incluimos un codigo para el funcionamiento del mouse 
+
+## ¿Cómo funciona la aplicación?
+Cuando se mueve el mouse aparecen varios circulos blancos que siguen al cursor, y cuando se da click estos cambian de color 
+
+## ¿Qué hace la función mouseMoved?
+Guarda la posicion de las particulas y hace que no aparezcan mas de 100 
+
+## ¿Qué hace la función mousePressed?
+Recibe la posicion del cursor y hace que cuando se haga click se cambie el color de el circulo 
+
+## ¿Qué hace la función setup?
+Define el valor de el Background (en este caso, negro) y el color inicial de la bola 
+
+## ¿Qué hace la función update?
+Actualiza el programa en base a los datos que se reciben
+
+## ¿Qué hace la función draw?
+Dibuja un circulo de radio 50 en cada posicion usando el color que le asignamos 
+
+# Actividad 3
+## ¿Qué hace cada función? ¿Qué hace cada línea de código?
+Lo que hace cada funcion ya lo explique en la actividad anterior
+
+le modifique al codigo la funcion setup y le puse esta linea que modifica el color de la figura, en este caso al color rosado
+
+`particleColor = ofColor::pink;`
+
+y cambie la funcion draw y le puse esta linea que cambia la forma de la figura, en este caso la convierte en un rectangulo
+
+```
+void ofApp::draw() {
+    for (auto & pos : particles) {
+        ofSetColor(particleColor);
+        ofDrawRectangle(pos, 80, 80);
+    }
+}
+```
+<img width="1036" height="781" alt="Actividad3" src="https://github.com/user-attachments/assets/797e93cd-1823-4262-a2f1-ef179b87df80" />
+
+# Actividad 5
+## ¿Cuál es la definición de un puntero?
+Un puntero es una variable que almacena la dirección de memoria de otra variable
+En esencia, un puntero "apunta" a un lugar específico en la memoria, permitiendo acceder y manipular datos de manera indirecta
+
+## ¿Dónde está el puntero?
+El puntero aparece en esta parte del codigo 
+```
+spheres.push_back(new Sphere(x, y, radius));
+```
+
+## ¿Cómo se inicializa el puntero?
+Un puntero en C++ se inicializa asignándole una dirección de memoria o un valor especial 
+En el codigo se inicializa asi
+
+```
+spheres.push_back(new Sphere(x, y, radius));
+```
+## ¿Para qué se está usando el puntero?
+En el codigo el puntero se esta usando para dos cosas: 
+
+1.  guardar y manejar objetos en un vector
+   
+```
+spheres.push_back(new Sphere(x, y, radius));
+```
+
+2. Tener una "referencia" a la esfera seleccionada
+
+```
+Sphere* selectedSphere;
+```
+
+## ¿Qué es exactamente lo que está almacenado en el puntero?
+Un puntero en C++ no guarda el objeto en sí, sino la dirección de memoria donde está ese objeto.
+En este programa se guarda: 
+- Los punteros dentro de spheres guardan las direcciones de cada Sphere creada en el heap.
+- selectedSphere guarda la dirección de la esfera que el usuario seleccionó con el mouse.
+
+# Actividad 7
+## ¿Qué sucede cuando presionas la tecla “c”?
+Me aparece esto
+
+<img width="1025" height="386" alt="sistemas foto" src="https://github.com/user-attachments/assets/a413e828-3207-4b60-bba8-624dce850b9f" />
+
+cuando realizo el cambio en el codigo aparece esto 
+
+<img width="1028" height="801" alt="sistemas foto 2" src="https://github.com/user-attachments/assets/e0ecc05e-b11e-4a3b-a504-d3712e3af25f" />
+
+Me imagino que sucede porque en el codigo se crea un puntero con la esfera 
+
+# Actividad 9
+## ¿Qué sucede cuando presionas la tecla “f”?
+
+Se borra la ultima esfera creada
+
+<img width="1020" height="786" alt="sistemas foto 3" src="https://github.com/user-attachments/assets/c7d82347-0968-48c3-85d0-4c8b2a045820" />
+
+

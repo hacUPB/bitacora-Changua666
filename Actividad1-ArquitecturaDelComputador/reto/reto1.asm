@@ -1,0 +1,146 @@
+//punto 1 
+@1978
+D=A
+//punto 2
+@69
+D=A
+@100
+M=D
+//Punto 3
+@24
+D=M
+@200
+M=D
+//punto 4
+@100
+D=M
+@15
+D=D-M
+@100
+M=D
+//punto 5
+@0
+D=M
+@1
+D=D+M
+@69
+D=D+A
+@2
+M=D
+//punto 6
+D;JEQ
+//punto 7 
+@100
+0;JMP
+@20
+//punto 12
+@R1 
+D=M
+@2
+D=D+M
+@69 
+D=D+A
+@4
+M=D
+//punto 13
+@0
+D=M
+@SET_POS
+D;JGE
+@1
+M=-1
+@LOOP
+0;JMP
+(SET_POS)
+@1
+M=1
+(LOOP)
+@LOOP
+0;JMP
+// punto 14
+@1
+D=M
+@R13
+M=D
+@R13
+A=M
+D=M
+@4
+M=D
+// punto 15
+@R0
+D=M
+@START
+M=D
+@R1
+D=M
+@END
+M=D
+@COUNT
+M=0
+(LOOP)
+@COUNT
+D=M
+@END
+D=D-M
+@STOP
+D;JEQ
+@START
+A=M
+M=-1
+@START
+D=M
+@1
+D=D+1
+@START
+M=D
+@COUNT
+D=M
+@1
+D=D+1
+@COUNT
+M=D
+@LOOP
+0;JMP
+(STOP)
+@STOP
+0;JMP
+//punto 16
+@0
+M=0
+@1
+M=0
+@100
+D=A
+@2
+M=D
+(LOOP)
+@1
+D=M
+@10
+D=D-A
+@END
+D;JEQ
+@2
+D=M
+@1
+D=D+M
+@3
+M=D
+@3
+A=M
+D=M
+@0
+M=M+D
+@1
+M=M+1
+@LOOP
+0;JMP
+(END)
+@END
+0;JMP
+//punto 17
+@7
+D=D-A
+@69
+D;JEQ
